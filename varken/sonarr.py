@@ -20,7 +20,7 @@ class SonarrAPI(object):
         return f"<sonarr-{self.server.id}>"
 
     def get_calendar(self, query="Missing"):
-        endpoint = '/api/calendar/'
+        endpoint = '/api/v3/calendar/'
         today = str(date.today())
         last_days = str(date.today() - timedelta(days=self.server.missing_days))
         future = str(date.today() + timedelta(days=self.server.future_days))
@@ -85,7 +85,7 @@ class SonarrAPI(object):
 
     def get_queue(self):
         influx_payload = []
-        endpoint = '/api/queue'
+        endpoint = '/api/v3/queue'
         now = datetime.now(timezone.utc).astimezone().isoformat()
         queue = []
 
